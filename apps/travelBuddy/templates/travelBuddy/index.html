@@ -7,45 +7,60 @@
         <link rel="stylesheet" href="{% static 'travelBuddy/css/indexStyle.css' %}">
     </head>
     <body>
-        <h2>Welcome</h2>
-        <div id="regBox">
-            {% if messages %}
-                <div class="errors">
-                {% for message in messages %}
-                    {{message}}
-                    <br>
-                {% endfor %}
-                </div>
-            {% endif %}
-            <span>Register</span>
-            <br>
-            <form action="/register" method="post">
-                {% csrf_token %}
-                Name: <input type="text" name="name">
-                <br>
-                Username: <input type="text" name="userName">
-                <br>
-                Password: <input type="password" name="password">
-                <br>
-                Confirm Password: <input type="password" name="confirmPW">
-                <br>
-                <input id="regBut" type="submit" value="Register">
-                <br>
-            </form>
+        <div class="header">
+            <h2>Travel Buddy</h2>
         </div>
-        <br>
-        <div id="loginBox">
-            <span>Login</span>
-            <br>
-            <form action="/login" method="post">
-                {% csrf_token %}
-                Username: <input type="text" name="userName">
+        <div class="container">
+            <h1>Welcome</h1>
+            <div id="regBox">
+                {% if messages %}
+                    <div class="errors">
+                    {% for message in messages %}
+                        {{message}}
+                        <br>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+                <span>Register</span>
                 <br>
-                Password: <input type="password" name="password">
+                <form id="regForm" action="/register" method="post">
+                    {% csrf_token %}
+                    <dl class="FormIns">
+                        <dt><label for="name">Name:</label> </dt>
+                        <dd><input class="input" type="text" name="name"></dd>
+                        <br>
+                        <dt><label for="userName">Username:</label> </dt>
+                        <dd><input class="input" type="text" name="userName"></dd>
+                        <br>
+                        <dt><label for="password">Password:</label> </dt>
+                        <dd><input class="input" type="password" name="password"></dd>
+                        <br>
+                        <dt><label for="confirmPW">Confirm Password:</label> </dt>
+                        <dd><input class="input" type="password" name="confirmPW"></dd>
+                    </dl>
+                    <br>
+                    <input id="regBut" type="submit" value="Register">
+                    <br>
+                </form>
+            </div>
+
+            <div id="loginBox">
+                <span>Login</span>
                 <br>
-                <input type="submit" id="logBut" value="Login">
-                <br>
-            </form>
+                <form id="loginForm" action="/login" method="post">
+                    {% csrf_token %}
+                    <dl class="FormIns">
+                        <dt><label for="userName">Username:</label></dt>
+                        <dd> <input type="text" name="userName"></dd>
+                        <br>
+                        <dt><label for="password">Password:</label></dt>
+                        <dd> <input type="password" name="password"></dd>
+                    </dl>
+                    <br>
+                    <input type="submit" id="logBut" value="Login">
+                    <br>
+                </form>
+            </div>
         </div>
     </body>
 </html>

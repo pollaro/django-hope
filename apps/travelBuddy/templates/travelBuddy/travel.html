@@ -4,55 +4,64 @@
         <meta charset="utf-8">
         <title>Travel Dash</title>
         {% load static %}
-        <link rel="stylesheet" href="{% static 'travelBuddy/css/traelStyle.css' %}">
+        <link rel="stylesheet" href="{% static 'travelBuddy/css/travelStyle.css' %}">
     </head>
     <body>
-        <h2>Hello {{ request.session.userName }}!</h2>
-        <div class="logout">
-            <a href="/logout">Logout</a>
+        <div class="header">
+            <div class="hdrTitle">
+                <h2>Travel Buddy</h2>
+            </div>
+            <div class="hdrLinks">
+                <a href="/logout">Logout</a>
+            </div>
         </div>
-        <br>
-        <h3>Your Trip Schedules</h3>
-        <br>
-        <table>
-            <tr>
-                <th>Destination</th>
-                <th>Travel Start Date</th>
-                <th>Travel End Date</th>
-                <th>Plan</th>
-            </tr>
-            {% for trip in userTrips %}
-            <tr>
-                <td><a href="{% url 'trip' id=trip.id %}">{{ trip.destination }}</a></td>
-                <td>{{ trip.startDate|date:'F j Y' }}</td>
-                <td>{{ trip.endDate|date:'F j Y' }}</td>
-                <td>{{ trip.plan }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        <br>
-        <h3>Other User's Travel Plans</h3>
-        <br>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Destination</th>
-                <th>Travel Start Date</th>
-                <th>Travel End Date</th>
-                <th>Would you like to join?</th>
-            </tr>
-            {% for other in otherTrips %}
-            <tr>
-                <td>{{ other.organized.name }}</td>
-                <td><a href="{% url 'trip' id=other.id %}">{{ other.destination }}</a></td>
-                <td>{{ other.startDate|date:'F j Y' }}</td>
-                <td>{{ other.endDate|date:'F j Y' }}</td>
-                <td><a href="{% url 'joinTrip' id=other.id %}">Join</a></td>
-            </tr>
-            {% endfor %}
-        </table>
-        <div class="addPlan">
-            <a href="{% url 'addTravel' %}">Add Travel Plan</a>
+        <div class="container">
+            <h2>Hello {{ request.session.userName }}!</h2>
+
+            <h2>Your Trip Schedules</h2>
+            <br>
+            <table>
+                <tr>
+                    <th>Destination</th>
+                    <th>Travel Start Date</th>
+                    <th>Travel End Date</th>
+                    <th>Plan</th>
+                </tr>
+                {% for trip in userTrips %}
+                <tr>
+                    <td><a href="{% url 'trip' id=trip.id %}">{{ trip.destination }}</a></td>
+                    <td>{{ trip.startDate|date:'F j Y' }}</td>
+                    <td>{{ trip.endDate|date:'F j Y' }}</td>
+                    <td>{{ trip.plan }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <h2>Other User's Travel Plans</h2>
+            <br>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Destination</th>
+                    <th>Travel Start Date</th>
+                    <th>Travel End Date</th>
+                    <th>Would you like to join?</th>
+                </tr>
+                {% for other in otherTrips %}
+                <tr>
+                    <td>{{ other.organized.name }}</td>
+                    <td><a href="{% url 'trip' id=other.id %}">{{ other.destination }}</a></td>
+                    <td>{{ other.startDate|date:'F j Y' }}</td>
+                    <td>{{ other.endDate|date:'F j Y' }}</td>
+                    <td><a href="{% url 'joinTrip' id=other.id %}">Join</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <div class="addPlan">
+                <br>
+                <br>
+                <a href="{% url 'addTravel' %}">Add Travel Plan</a>
+            </div>
         </div>
     </body>
 </html>

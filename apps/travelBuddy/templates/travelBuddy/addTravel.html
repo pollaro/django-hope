@@ -3,31 +3,42 @@
     <head>
         <meta charset="utf-8">
         <title>Add a Plan</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'travelBuddy/css/addTravelStyle.css' %}">
     </head>
     <body>
-        <div class="navbar">
-            <a href="/travels">Home</a> | <a href="/logout">Logout</a>
+        <div class="header">
+            <div class="hdrTitle">
+                <h2>Travel Buddy</h2>
+            </div>
+            <div class="navbar">
+                <a href="/travels">Home</a> | <a href="/logout">Logout</a>
+            </div>
         </div>
-        <form action="/submitTrip" method="post">
-            {% csrf_token %}
-            {% if messages %}
-                <div class="errors">
-                {% for message in messages %}
-                    {{message}}
+        <div class="container">
+            <form action="/submitTrip" method="post">
+                {% csrf_token %}
+                {% if messages %}
+                    <div class="errors">
+                    {% for message in messages %}
+                        {{message}}
+                        <br>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+                <br>
+                <fieldset>
+                    <label for="destination">Destination:</label> <input class="inputs" type="text" name="destination" value="">
                     <br>
-                {% endfor %}
-                </div>
-            {% endif %}
-            <br>
-            Destination: <input type="text" name="destination" value="">
-            <br>
-            Description: <input type="text" name="description" value="">
-            <br>
-            Travel From: <input type="date" name="travelFrom" value="">
-            <br>
-            Travel To: <input type="date" name="travelTo" value="">
-            <br>
-            <input type="submit" name="addSub" value="Add Trip">
-        </form>
+                    <label for="description">Description:</label> <input class="inputs" type="text" name="description" value="">
+                    <br>
+                    <label for="travelFrom">Travel From:</label> <input class="inputs" type="date" name="travelFrom" value="">
+                    <br>
+                    <label for="travelTo">Travel To:</label> <input class="inputs" type="date" name="travelTo" value="">
+                    <br>
+                    <input id="submitBut" type="submit" name="addSub" value="Add Trip">
+                </fieldset>
+            </form>
+        </div>
     </body>
 </html>

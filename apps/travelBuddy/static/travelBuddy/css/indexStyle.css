@@ -1,0 +1,91 @@
+.header{
+    background: linear-gradient(orange,yellow);
+    padding-left: 2%;
+    padding-top: 1%;
+
+}
+
+.container{
+    margin: 1%;
+    margin-left: 4%;
+    margin-right: 4%;
+    box-sizing: border-box;
+    /*border: thin black solid;*/
+    padding: 1%;
+    text-align: center;
+    width: 90%;
+}
+
+#regBox{
+    display: inline-block;
+    width: 25%;
+    margin-left: 22%;
+    border: thin solid black;
+    box-sizing: border-box;
+    padding: 1%;
+    vertical-align: middle;
+}
+
+#loginBox{
+    display: inline-block;
+    margin-right: 22%;
+    border: thin solid black;
+    box-sizing: border-box;
+    padding: 1%;
+    width: 25%;
+    vertical-align: middle;
+}
+
+#regBut,#logBut{
+    background-color: orange;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    border: none;
+    padding: 2%;
+}
+span{
+    float: right;
+    font-size: 1.5em;
+}
+
+dl{
+    margin-bottom: 0;
+    width: inherit;
+}
+
+dt,dd{
+    display: inline-block;
+    margin-top: 1%;
+}
+
+dt{
+    width: 40%;
+    text-align: right;
+}
+
+dd{
+    width: 40%;
+    margin-left: 0;
+    margin-right: 1%;
+}
+
+.container:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    width: 75%;
+    height: 75%;
+    z-index: 1;
+    opacity: 0.33;
+    background-image:url(../images/airplane.png);
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
