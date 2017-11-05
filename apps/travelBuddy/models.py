@@ -31,8 +31,8 @@ class UserManager(models.Manager):
             errors['login'] = 'Username and password not recognized'
         else:
             user = Users.objects.get(userName=postData['userName'])
-        if not bcrypt.checkpw(encodePW,user.password.encode()):
-            errors['login'] = 'Username and password not recognized'
+            if not bcrypt.checkpw(encodePW,user.password.encode()):
+                errors['login'] = 'Username and password not recognized'
         return errors
 
 class TripManager(models.Manager):

@@ -13,33 +13,37 @@
         <div class="container">
             <h1>Welcome</h1>
             <div id="regBox">
+                <span>Register</span>
+                <br>
                 {% if messages %}
                     <div class="errors">
+                        <br>
                     {% for message in messages %}
-                        {{message}}
+                        {% if message.tags != 'login error' %}
+                            {{message}}
+                        {% endif %}
                         <br>
                     {% endfor %}
                     </div>
                 {% endif %}
-                <span>Register</span>
                 <br>
                 <form id="regForm" action="/register" method="post">
                     {% csrf_token %}
-                    <dl class="FormIns">
-                        <dt><label for="name">Name:</label> </dt>
-                        <dd><input class="input" type="text" name="name"></dd>
+                    <fieldset>
+                        <label for="name">Name:</label>
+                        <input class="input" type="text" name="name">
                         <br>
-                        <dt><label for="userName">Username:</label> </dt>
-                        <dd><input class="input" type="text" name="userName"></dd>
+                        <label for="userName">Username:</label>
+                        <input class="input" type="text" name="userName">
                         <br>
-                        <dt><label for="password">Password:</label> </dt>
-                        <dd><input class="input" type="password" name="password"></dd>
+                        <label for="password">Password:</label>
+                        <input class="input" type="password" name="password">
                         <br>
-                        <dt><label for="confirmPW">Confirm Password:</label> </dt>
-                        <dd><input class="input" type="password" name="confirmPW"></dd>
-                    </dl>
-                    <br>
-                    <input id="regBut" type="submit" value="Register">
+                        <label for="confirmPW">Confirm Password:</label>
+                        <input class="input" type="password" name="confirmPW">
+                        <br>
+                        <input id="regBut" type="submit" value="Register">
+                    </fieldset>
                     <br>
                 </form>
             </div>
@@ -47,17 +51,29 @@
             <div id="loginBox">
                 <span>Login</span>
                 <br>
+                {% if messages %}
+                    <div class="errors">
+                        <br>
+                    {% for message in messages %}
+                        {% if message.tags == 'login error' %}
+                            {{message}}
+                        {% endif %}
+                        <br>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+                <br>
                 <form id="loginForm" action="/login" method="post">
                     {% csrf_token %}
-                    <dl class="FormIns">
-                        <dt><label for="userName">Username:</label></dt>
-                        <dd> <input type="text" name="userName"></dd>
+                    <fieldset>
+                        <label for="userName">Username:</label>
+                         <input type="text" name="userName">
                         <br>
-                        <dt><label for="password">Password:</label></dt>
-                        <dd> <input type="password" name="password"></dd>
-                    </dl>
-                    <br>
-                    <input type="submit" id="logBut" value="Login">
+                        <label for="password">Password:</label>
+                         <input type="password" name="password">
+                        <br>
+                        <input type="submit" id="logBut" value="Login">
+                    </fieldset>
                     <br>
                 </form>
             </div>
